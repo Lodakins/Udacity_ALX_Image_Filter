@@ -6,8 +6,8 @@ metadata:
     run: udagram-user-app
 spec:
   ports:
-  - port: 80
+  - port: 8080
     protocol: TCP
+    targetPort: 8080
   selector:
-    run: udagram-user-app
-      - containerPort: 8080
+    service: udagram-user-app

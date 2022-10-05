@@ -23,5 +23,7 @@ spec:
             name: alx-img-envvar
         - secretRef:
             name: alx-image-secret
+        - secretRef:
+            name: alx-image-aws-secret
         ports:
         - containerPort: 80

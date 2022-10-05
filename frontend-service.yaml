@@ -6,8 +6,7 @@ metadata:
     run: frontend-app
 spec:
   ports:
-  - port: 80
-    protocol: TCP
+  - port: 8100
+    targetPort: 80
   selector:
-    run: frontend-app
-      - containerPort: 8100
+    service: reverseproxy-app
