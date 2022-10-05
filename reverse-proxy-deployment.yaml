@@ -5,7 +5,7 @@ metadata:
   labels:
     app: reverseproxy-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: reverseproxy-app
@@ -17,5 +17,7 @@ spec:
       containers:
       - name: reverseproxy
         image: lodakins/reverseproxy:v1
+        imagePullPolicy: Always  
         ports:
         - containerPort: 8080
+      restartPolicy: Always
