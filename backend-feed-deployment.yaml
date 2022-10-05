@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: udagram-feed-app
+  labels:
+    app: udagram-feed-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: udagram-feed-app
+  template:
+    metadata:
+      labels:
+        app: udagram-feed-app
+    spec:
+      containers:
+      - name: udagram-api-feed
+        image:  lodakins/udagram-api-feed:v1
+        envFrom:
+          - configMapRef:
+              name: alx-img-envvar
+          - secretRef:
+              name: alx-image-secret
+        ports:
+        - containerPort: 80
+        
