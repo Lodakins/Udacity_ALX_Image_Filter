@@ -26,4 +26,13 @@ spec:
               name: alx-image-aws-secret
         ports:
         - containerPort: 80
+        volumeMounts:
+        - name: aws-config
+          mountPath: "/.aws:/root/.aws"
+          readOnly: true
+      volumes:
+      - name: aws-config
+        secret:
+          secretName: alx-image-aws-secret
+          optional: false
         
