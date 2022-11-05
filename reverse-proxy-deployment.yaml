@@ -15,7 +15,7 @@ spec:
         app: reverseproxy-app
     spec:
       containers:
-      - name: reverseproxy
+      - name: reverseproxy-app
         image: lodakins/reverseproxy:v1
         imagePullPolicy: Always  
         ports:

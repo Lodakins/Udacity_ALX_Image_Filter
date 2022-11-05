@@ -6,7 +6,7 @@ metadata:
     run: reverseproxy-app
 spec:
   ports:
-  - name: "8080"
+  - name: "reverseproxy-app"
     port: 8080
     targetPort: 8080
   selector:
