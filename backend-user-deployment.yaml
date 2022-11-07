@@ -4,6 +4,7 @@ metadata:
   name: backend-user
   labels:
     app: backend-user
+    type: back-end
 spec:
   replicas: 1
   selector:

@@ -4,6 +4,7 @@ metadata:
   name: backend-feed
   labels:
     app: backend-feed
+    type: back-end
 spec:
   replicas: 1
   selector:
