@@ -5,7 +5,7 @@ metadata:
   labels:
     app: udagram-feed-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: udagram-feed-app
@@ -15,24 +15,23 @@ spec:
         app: udagram-feed-app
     spec:
       containers:
-      - name: udagram-api-feed
-        image:  lodakins/udagram-api-feed:v1
-        envFrom:
-          - configMapRef:
-              name: alx-img-envvar
-          - secretRef:
-              name: alx-image-secret
-          - secretRef:
-              name: alx-image-aws-secret
-        ports:
-        - containerPort: 80
-        volumeMounts:
-        - name: aws-config
-          mountPath: "/.aws:/root/.aws"
-          readOnly: true
-      volumes:
-      - name: aws-config
-        secret:
-          secretName: alx-image-aws-secret
-          optional: false
-        
+        - name: udagram-feed-app
+          image: lodakins/udagram-api-feed:v1
+          envFrom:
+            - configMapRef:
+                name: alx-img-envvar
+            - secretRef:
+                name: alx-image-secret
+            - secretRef:
+                name: alx-image-aws-secret
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: aws-config
+              mountPath: "/.aws:/root/.aws"
+              readOnly: true
+          volumes:
+            - name: aws-config
+              secret:
+                secretName: alx-image-aws-secret
+                optional: false
