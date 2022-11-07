@@ -1,34 +1,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: udagram-feed-app
+  name: backend-feed
   labels:
-    app: udagram-feed-app
+    app: backend-feed
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: udagram-feed-app
+      app: backend-feed
   template:
     metadata:
       labels:
-        app: udagram-feed-app
+        app: backend-feed
     spec:
       containers:
-        - name: udagram-api-feed
+        - name: backend-feed
           image: lodakins/udagram-api-feed:v1
           envFrom:
             - configMapRef:
                 name: alx-img-envvar
             - secretRef:
                 name: alx-image-secret
-            - secretRef:
-                name: alx-image-aws-secret
           ports:
-            - containerPort: 80
+            - containerPort: 8080
+          resources:
+            limits:
+              cpu: 400m
+            requests:
+              cpu: 200m
           volumeMounts:
             - name: aws-config
-              mountPath: "/.aws:/root/.aws"
+              mountPath: "./root/.aws"
               readOnly: true
       volumes:
         - name: aws-config

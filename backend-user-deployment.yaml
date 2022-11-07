@@ -1,38 +1,42 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: udagram-user-app
+  name: backend-user
   labels:
-    app: udagram-user-app
+    app: backend-user
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: udagram-user-app
+      app: backend-user
   template:
     metadata:
       labels:
-        app: udagram-user-app
+        app: backend-user
     spec:
       containers:
-      - name: udagram-api-user
-        image: lodakins/udagram-api-user:v1
-        envFrom:
-        envFrom:
-        - configMapRef:
-            name: alx-img-envvar
-        - secretRef:
-            name: alx-image-secret
-        - secretRef:
-            name: alx-image-aws-secret
-        ports:
-        - containerPort: 80
-        volumeMounts:
-          - name: aws-config
-            mountPath: "/.aws:/root/.aws"
-            readOnly: true
+        - name: backend-user
+          image: lodakins/udagram-api-user:v1
+          envFrom:
+            - configMapRef:
+                name: alx-img-envvar
+            - secretRef:
+                name: alx-image-secret
+            - secretRef:
+                name: alx-image-aws-secret
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              cpu: 400m
+            requests:
+              cpu: 200m
+          volumeMounts:
+            - name: aws-config
+              mountPath: "./root/.aws"
+              readOnly: true
       volumes:
-      - name: aws-config
-        secret:
-          secretName: alx-image-aws-secret
-          optional: false
+        - name: aws-config
+          secret:
+            secretName: alx-image-aws-secret
+            optional: false
