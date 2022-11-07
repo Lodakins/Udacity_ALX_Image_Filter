@@ -4,8 +4,9 @@ metadata:
   name: frontend-app
   labels:
     app: frontend-app
+    type: front-end
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: frontend-app
