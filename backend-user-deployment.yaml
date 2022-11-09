@@ -6,7 +6,7 @@ metadata:
     app: backend-user
     type: back-end
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: backend-user
