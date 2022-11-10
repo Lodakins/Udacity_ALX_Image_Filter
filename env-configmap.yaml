@@ -4,11 +4,11 @@ metadata:
   name: alx-img-envvar
 data:
   # property-like keys; each key maps to a simple value
-  AWS_BUCKET: alx-image-processing-1
+  AWS_BUCKET: sdfgfsgfgsfsgg
   POSTGRES_DB: postgres 
-  POSTGRES_HOST: alx-db.cmyqyczkngyq.us-east-1.rds.amazonaws.com
+  POSTGRES_HOST: alx-db.fsgsfgsfgfgs.us-east-1.rds.amazonaws.com
   AWS_REGION: us-east-1
   url: http://localhost:8080
   POSTGRES_USERNAME: postgres
-  AWS_PROFILE: udagram-dev
+  AWS_PROFILE: fgsdfgfsg-dev
   JWT_SECRET: testing
