@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: reverseproxy-app
+  name: reverseproxy
   labels:
-    app: reverseproxy-app
+    app: reverseproxy
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: reverseproxy-app
+      app: reverseproxy
   template:
     metadata:
       labels:
-        app: reverseproxy-app
+        app: reverseproxy
     spec:
       containers:
-        - name: reverseproxy-app
+        - name: reverseproxy
           image: lodakins/reverseproxy:v1
           imagePullPolicy: Always
           ports:
